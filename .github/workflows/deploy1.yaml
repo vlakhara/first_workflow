@@ -1,7 +1,7 @@
 name: Deployment 1
 on: push
 jobs:
-  Lint:
+  lint:
     name: Check Lint Issues
     runs-on: ubuntu-latest
     steps:
@@ -15,3 +15,31 @@ jobs:
         run: npm install
       - name: Run Lint
         run: npm run lint
+  test:
+    name: Run Test Cases
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Install NodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        run: npm install
+      - name: Run tests
+        run: npm run test
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Install NodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        run: npm install
+      - name: Build the app
+        run: npm run build
