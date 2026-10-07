@@ -1,0 +1,9 @@
+name: Issues
+on: issues
+jobs:
+  log_issues:
+    name: Log Issues Meta Data
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Metadata
+        run: echo '${{ toJson(github) }}'
